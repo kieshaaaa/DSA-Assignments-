@@ -1,0 +1,89 @@
+//4a
+#include <iostream>
+using namespace std;
+
+void reverseArray(int arr[], int n) {
+  for (int i = 0; i < n / 2; i++) {
+    int temp = arr[i];
+    arr[i] = arr[n - i - 1];
+    arr[n - i - 1] = temp;
+  }
+}
+
+int main() {
+  int arr[] = {1, 2, 3, 4, 5};
+  int n = sizeof(arr) / sizeof(arr[0]);
+  reverseArray(arr, n);
+  cout << "Reversed array: ";
+  for (int i = 0; i < n; i++)
+    cout << arr[i] << " ";
+  cout << endl;
+}
+//4b
+#include <iostream>
+using namespace std;
+
+int main() {
+  int r1, c1, r2, c2;
+  cout << "Enter rows and cols of first matrix: ";
+  cin >> r1 >> c1;
+  cout << "Enter rows and cols of second matrix: ";
+  cin >> r2 >> c2;
+  if (c1 != r2) {
+    cout << "Matrix multiplication not possible\n";
+    return 0;
+  }
+  int A[50][50], B[50][50], C[50][50] = {0};
+  cout << "Enter first matrix:\n";
+  for (int i = 0; i < r1; i++)
+    for (int j = 0; j < c1; j++)
+      cin >> A[i][j];
+  cout << "Enter second matrix:\n";
+  for (int i = 0; i < r2; i++)
+    for (int j = 0; j < c2; j++)
+
+      cin >> B[i][j];
+  for (int i = 0; i < r1; i++) {
+    for (int j = 0; j < c2; j++) {
+      for (int k = 0; k < c1; k++) {
+        C[i][j] += A[i][k] * B[k][j];
+      }
+    }
+  }
+  cout << "Result matrix:\n";
+  for (int i = 0; i < r1; i++) {
+    for (int j = 0; j < c2; j++) {
+      cout << C[i][j] << " ";
+    }
+    cout << endl;
+  }
+}
+//4c
+#include <iostream>
+using namespace std;
+
+int main() {
+  int r, c;
+  cout << "Enter rows and cols of matrix: ";
+  cin >> r >> c;
+
+  int A[50][50], T[50][50];
+  cout << "Enter matrix:\n";
+
+  for (int i = 0; i < r; i++)
+    for (int j = 0; j < c; j++)
+      cin >> A[i][j];
+
+  for (int i = 0; i < r; i++)
+    for (int j = 0; j < c; j++)
+      T[j][i] = A[i][j];
+
+  cout << "Transpose matrix:\n";
+
+  for (int i = 0; i < c; i++) {
+    for (int j = 0; j < r; j++) {
+      cout << T[i][j] << " ";
+    }
+    cout << endl;
+  }
+}
